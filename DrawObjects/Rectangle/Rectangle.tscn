@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://View/DrawObjects/Rectangle/Rectangle.gd" type="Script" id=1]
+
+[node name="Rectangle" type="Node2D"]
+script = ExtResource( 1 )
+color_node = "path"
+color_var = "var name"
+
