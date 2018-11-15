@@ -4,6 +4,10 @@
 
 [node name="Rectangle" type="Node2D"]
 script = ExtResource( 1 )
+base_pos_node = "path"
+base_pos_var = "var"
+to_pos_node = "path"
+to_pos_var = "var"
 color_node = "path"
 color_var = "var name"
 

@@ -4,38 +4,38 @@ extends Node2D
 #mouse is currently at from the place the mouse clicked.
 
 #Drawing variables.
-var base_pos : Vector2 = Vector2( -1, -1 )
-var to_pos : Vector2 = Vector2( 0,0 )
+export var base_pos_node = "path"
+export var base_pos_var = "var"
+export var to_pos_node = "path"
+export var to_pos_var = "var"
 
 
 #These get the object that has color.
 export var color_node = "path"
 export var color_var = "var name"
 
-
-func set_corners( first_pos, second_pos = base_pos ):
-	#Just scale one for one with the overall size of fromPos
-	#with toPos.
-	base_pos = second_pos
-	to_pos = first_pos
-	update()
+var base_node
+var to_node
 
 
 func _draw():
 	#Draw a rectangle each frame.
-	var rect : Rect2 = Rect2( base_pos, to_pos - base_pos )
+	var base = base_node.get( base_pos_var )
+	var rect : Rect2 = Rect2( base , 
+	to_node.get( to_pos_var ) - base )
 	var color = get_node( color_node ).get( color_var )
+	
+	#Actually draw the rectangle.
 	draw_rect( rect, color, true )
 
 
- #Demo process.
-#func _process(delta):
-#	set_corners( get_local_mouse_position() )
-#
-#	#Set base pos if mouse is clicked.
-#	if Input.is_mouse_button_pressed( 1 ) :
-#		set_corners( get_local_mouse_position(), get_local_mouse_position() )
+func _process(delta):
+	update()
 
 
 func _ready():
 	self.global_position = Vector2( 1,1 )
+	
+	#Set ready variables for easy access in method calls.
+	base_node = get_node( base_pos_node )
+	to_node = get_node( to_pos_node )
