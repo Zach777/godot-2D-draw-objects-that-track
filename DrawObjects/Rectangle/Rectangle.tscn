@@ -10,4 +10,7 @@ to_pos_node = "path"
 to_pos_var = "var"
 color_node = "path"
 color_var = "var name"
+backup_to = Vector2( 100, 100 )
+backup_base = Vector2( 800, 800 )
+backup_color = Color( 0, 0.741176, 1, 0.168627 )
 
